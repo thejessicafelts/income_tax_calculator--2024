@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 Income Tax Calculator</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div class="inner-container">
+            <h1>2024 Income Tax Calculator</h1>
+        </div>
+    </header>
+    <main>
+        <div class="inner-container">
+            <div class="button-container">
+                <button id="single">Single</button>
+                <button id="marriedJoint">Married Filing Jointly</button>
+                <button id="marriedSeparate">Married Filing Separately</button>
+                <button id="headOfHousehold">Head of Household</button>
+            </div>            
+            <div id="singleDiv" class="hidden">
+                <h2>Single Filer</h2>
+                <label for="singleIncome">Enter Annual Gross Income:</label>
+                <input type="number" id="singleIncome" step="0.01">
+                <button onclick="filingSingle()">Submit</button>
+            </div>
+            <div id="marriedJointDiv" class="hidden">
+                <h2>Married Filing Jointly</h2>
+                <label for="marriedJointIncome">Enter Annual Gross Income:</label>
+                <input type="number" id="marriedJointIncome" step="0.01">
+                <button onclick="filingMarriedJoint()">Submit</button>
+            </div>
+            <div id="marriedSeparateDiv" class="hidden">
+                <h2>Married Filing Separately</h2>
+                <label for="marriedSeparateIncome">Enter Annual Gross Income:</label>
+                <input type="number" id="marriedSeparateIncome" step="0.01">
+                <button onclick="filingMarriedSeparate()">Submit</button>
+            </div>    
+            <div id="headOfHouseholdDiv" class="hidden">
+                <h2>Head of Household</h2>
+                <label for="headOfHouseholdIncome">Enter Annual Gross Income:</label>
+                <input type="number" id="headOfHouseholdIncome" step="0.01">
+                <button onclick="filingHeadOfHousehold()">Submit</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="inner-container">
+            <p>Made with &hearts; by thejessicafelts.</p>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
