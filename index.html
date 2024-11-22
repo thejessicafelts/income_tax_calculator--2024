@@ -24,9 +24,6 @@
     </header>
     <main>
         <div class="container">
-
-            <p class="notice">Currently, the calculations are provided in the JavaScript console only.</p>
-
             <form action="" id="tax-calculator-form">
                 <!-- Filing Year -->
                 <div class="form-group">
@@ -131,6 +128,15 @@
                     <input type="submit" value="Calculate" class="btn-submit" />
                 </div>
             </form>
+            <div id="results" class="hidden">
+                <h2>Income Tax:</h2>
+                <p><strong>Federal Tax:</strong> $<span id="federal-tax"></span></p>
+                <p><strong>State Tax (MI):</strong> $<span id="state-tax"></span></p>
+                <p><strong>OASDI Tax:</strong> $<span id="oasdi-tax"></span></p>
+                <p><strong>Medicare Tax:</strong> $<span id="medicare-tax"></span></p>
+                <p><strong>Net Income:</strong> $<span id="net-income"></span></p>
+                <p><strong>Monthly Net Income:</strong> $<span id="monthly-net-income"></span></p>
+            </div>
         </div>
     </main>
     <footer>

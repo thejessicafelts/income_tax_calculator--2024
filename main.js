@@ -1,16 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("tax-calculator-form");
+    const resultsDiv = document.getElementById("results");
+
+    const federalTaxEl = document.getElementById("federal-tax");
+    const stateTaxEl = document.getElementById("state-tax");
+    const oasdiTaxEl = document.getElementById("oasdi-tax");
+    const medicareTaxEl = document.getElementById("medicare-tax");
+    const netIncomeEl = document.getElementById("net-income");
+    const monthlyNetIncomeEl = document.getElementById("monthly-net-income");
 
     form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent the form from submitting and refreshing the page
+        event.preventDefault();
 
-        // Retrieve form values
         const filingYear = document.getElementById("filing-year").value;
         const filingStatus = document.querySelector("input[name='filing-status']:checked")?.value;
         const filingState = document.getElementById("filing-state").value;
         const incomeNet = parseFloat(document.getElementById("income").value);
 
-        // Validate inputs
         if (!filingStatus) {
             alert("Please select a filing status.");
             return;
@@ -21,14 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        console.log("Filing Year:", filingYear);
-        console.log("Filing Status:", filingStatus);
-        console.log("Filing State:", filingState);
-        console.log("Annual Income:", incomeNet);
-
-        // Process tax data
         const taxData = calculateTaxes(filingStatus, incomeNet);
-        console.log("Tax Data:", taxData);
+
+        federalTaxEl.textContent = taxData.federalTax.toFixed(2);
+        stateTaxEl.textContent = taxData.stateTax.toFixed(2);
+        oasdiTaxEl.textContent = taxData.oasdiTax.toFixed(2);
+        medicareTaxEl.textContent = taxData.medicareTax.toFixed(2);
+        netIncomeEl.textContent = taxData.netIncome.toFixed(2);
+        monthlyNetIncomeEl.textContent = taxData.monthlyNetIncome.toFixed(2);
+
+        resultsDiv.classList.remove("hidden");
     });
 });
 
@@ -113,12 +121,6 @@ function calculateTaxes(filingStatus, income) {
     const oasdiTax = calculateOASDITax(income);
     const medicareTax = calculateMedicareTax(income);
     const netIncome = calculateNetIncome(income, federalTax, stateTax, oasdiTax, medicareTax);
-
-    console.log(`Federal Tax: ${federalTax.toFixed(2)}`);
-    console.log(`State Tax (MI): ${stateTax.toFixed(2)}`);
-    console.log(`OASDI Tax: ${oasdiTax.toFixed(2)}`);
-    console.log(`Medicare Tax: ${medicareTax.toFixed(2)}`);
-    console.log(`Net Income: ${netIncome.toFixed(2)}`);
 
     return {
         federalTax,
