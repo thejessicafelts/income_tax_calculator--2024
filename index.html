@@ -9,46 +9,120 @@
 </head>
 <body>
     <header>
-        <div class="inner-container">
+        <div class="container">
             <h1>2024 Income Tax Calculator</h1>
         </div>
     </header>
     <main>
-        <div class="inner-container">
-            <div class="button-container">
-                <button id="single">Single</button>
-                <button id="marriedJoint">Married Filing Jointly</button>
-                <button id="marriedSeparate">Married Filing Separately</button>
-                <button id="headOfHousehold">Head of Household</button>
-            </div>            
-            <div id="singleDiv" class="hidden">
-                <h2>Single Filer</h2>
-                <label for="singleIncome">Enter Annual Gross Income:</label>
-                <input type="number" id="singleIncome" step="0.01">
-                <button onclick="filingSingle()">Submit</button>
-            </div>
-            <div id="marriedJointDiv" class="hidden">
-                <h2>Married Filing Jointly</h2>
-                <label for="marriedJointIncome">Enter Annual Gross Income:</label>
-                <input type="number" id="marriedJointIncome" step="0.01">
-                <button onclick="filingMarriedJoint()">Submit</button>
-            </div>
-            <div id="marriedSeparateDiv" class="hidden">
-                <h2>Married Filing Separately</h2>
-                <label for="marriedSeparateIncome">Enter Annual Gross Income:</label>
-                <input type="number" id="marriedSeparateIncome" step="0.01">
-                <button onclick="filingMarriedSeparate()">Submit</button>
-            </div>    
-            <div id="headOfHouseholdDiv" class="hidden">
-                <h2>Head of Household</h2>
-                <label for="headOfHouseholdIncome">Enter Annual Gross Income:</label>
-                <input type="number" id="headOfHouseholdIncome" step="0.01">
-                <button onclick="filingHeadOfHousehold()">Submit</button>
-            </div>
+        <div class="container">
+            <form action="" id="tax-calculator-form">
+                <!-- Filing Year -->
+                <div class="form-group">
+                    <label for="filing-year">Filing Year</label>
+                    <select name="filing-year" id="filing-year">
+                        <option value="2024" selected>2024</option>
+                        <option value="2025" disabled>2025</option>
+                    </select>
+                </div>
+
+                <!-- Filing Status -->
+                <div class="form-group">
+                    <label>Filing Status</label>
+                    <div class="radio-group">
+                        <div>
+                            <input name="filing-status" id="single" value="single" type="radio">
+                            <label for="single">Single</label>
+                        </div>
+                        <div>
+                            <input name="filing-status" id="married-joint" value="married-joint" type="radio">
+                            <label for="married-joint">Married, filing Jointly</label>
+                        </div>
+                        <div>
+                            <input name="filing-status" id="married-separate" value="married-separate" type="radio">
+                            <label for="married-separate">Married, filing Separately</label>
+                        </div>
+                        <div>
+                            <input name="filing-status" id="head-of-household" value="head-of-household" type="radio">
+                            <label for="head-of-household">Head of Household</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- State Dropdowns -->
+                <div class="form-group state-dropdowns">
+                    <div>
+                        <label for="filing-state">Filing State</label>
+                        <select name="filing-state" id="filing-state">
+                            <option value="alabama" disabled>Alabama</option>
+                            <option value="alaska" disabled>Alaska</option>
+                            <option value="arizona" disabled>Arizona</option>
+                            <option value="arkansas" disabled>Arkansas</option>
+                            <option value="california" disabled>California</option>
+                            <option value="colorado" disabled>Colorado</option>
+                            <option value="connecticut" disabled>Connecticut</option>
+                            <option value="delaware" disabled>Delaware</option>
+                            <option value="dc" disabled>District of Columbia</option>
+                            <option value="florida" disabled>Florida</option>
+                            <option value="georgia" disabled>Georgia</option>
+                            <option value="hawaii" disabled>Hawaii</option>
+                            <option value="idaho" disabled>Idaho</option>
+                            <option value="illinois" disabled>Illinois</option>
+                            <option value="indiana" disabled>Indiana</option>
+                            <option value="iowa" disabled>Iowa</option>
+                            <option value="kansas" disabled>Kansas</option>
+                            <option value="kentucky" disabled>Kentucky</option>
+                            <option value="louisiana" disabled>Louisiana</option>
+                            <option value="maine" disabled>Maine</option>
+                            <option value="maryland" disabled>Maryland</option>
+                            <option value="massachusetts" disabled>Massachusetts</option>
+                            <option value="michigan">Michigan</option>
+                            <option value="minnesota" disabled>Minnesota</option>
+                            <option value="mississippi" disabled>Mississippi</option>
+                            <option value="missouri" disabled>Missouri</option>
+                            <option value="montana" disabled>Montana</option>
+                            <option value="nebraska" disabled>Nebraska</option>
+                            <option value="nevada" disabled>Nevada</option>
+                            <option value="new-hampshire" disabled>New Hampshire</option>
+                            <option value="new-jersey" disabled>New Jersey</option>
+                            <option value="new-mexico" disabled>New Mexico</option>
+                            <option value="new-york" disabled>New York</option>
+                            <option value="north-carolina" disabled>North Carolina</option>
+                            <option value="north-dakota" disabled>North Dakota</option>
+                            <option value="ohio" disabled>Ohio</option>
+                            <option value="oklahoma" disabled>Oklahoma</option>
+                            <option value="oregon" disabled>Oregon</option>
+                            <option value="pennsylvania" disabled>Pennsylvania</option>
+                            <option value="rhode-island" disabled>Rhode Island</option>
+                            <option value="south-carolina" disabled>South Carolina</option>
+                            <option value="south-dakota" disabled>South Dakota</option>
+                            <option value="tennessee" disabled>Tennessee</option>
+                            <option value="texas" disabled>Texas</option>
+                            <option value="utah" disabled>Utah</option>
+                            <option value="vermont" disabled>Vermont</option>
+                            <option value="virginia" disabled>Virginia</option>
+                            <option value="washington" disabled>Washington</option>
+                            <option value="west-virginia" disabled>West Virginia</option>
+                            <option value="wisconsin" disabled>Wisconsin</option>
+                            <option value="wyoming" disabled>Wyoming</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Income Input -->
+                <div class="form-group">
+                    <label for="income">Annual Income</label>
+                    <input name="income" id="income" type="number" placeholder="Enter your annual income" />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <input type="submit" value="Calculate" class="btn-submit" />
+                </div>
+            </form>
         </div>
     </main>
     <footer>
-        <div class="inner-container">
+        <div class="container">
             <p>Made with &hearts; by thejessicafelts.</p>
         </div>
     </footer>
